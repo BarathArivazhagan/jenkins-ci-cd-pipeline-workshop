@@ -1,2 +1,3 @@
-# Jenkins-CI-CD-Pipelining--Workshop
-This repository demonstrates the usage of CI/CD pipelining mechanism using jenkins
+### jenkins-ci-cd-pipeline-workshop
+
+This repository demonstrates the usage of CI/CD pipelining mechanism using jenkins integration system.
