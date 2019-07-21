@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: demo-app
-        image: IMAGE_NAME # This is for jenkins to replace with actual image name
+        image: ORG_NAME/IMAGE_NAME # This is for jenkins to replace with actual image name
         ports:
         - containerPort: 8080
       
