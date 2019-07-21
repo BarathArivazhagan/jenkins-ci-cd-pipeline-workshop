@@ -1,6 +1,6 @@
 node {
    def mvnHome
-   stage('Preparation') { 
+   stage('Source Code') { 
       git 'https://github.com/BarathArivazhagan/jenkins-ci-cd-pipeline-workshop.git'
       mvnHome = tool 'M3'
    }
@@ -42,7 +42,7 @@ node {
         sh '''
         echo stop the running containters
         CONTAINER_NAME='demo-app'
-        echo contianer $CONTAINER_NAME
+        echo container name $CONTAINER_NAME
         CID=$(docker ps -q -f status=running -f name=^/${CONTAINER_NAME}$)
         if [ ! "${CID}" ]; then
           echo "Container doesn't exist"

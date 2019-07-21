@@ -1,6 +1,7 @@
 node {
    def mvnHome
-   stage('Preparation') { 
+   def kubeHome = '/usr/local/bin'
+   stage('Source Code') { 
       git 'https://github.com/BarathArivazhagan/jenkins-ci-cd-pipeline-workshop.git'
       mvnHome = tool 'M3'
    }
@@ -37,11 +38,14 @@ node {
       }
    }
    stage('Deploy to kubernetes') {
-      dir("spring-boot-demo") {
-        sh '''
-        kubectl -f k8s/spring-boot-demo-k8s.yaml
-        '''
-      }
+       withEnv(["KUBE_HOME=$kubeHome"]) {
+          dir("spring-boot-demo") {
+            sh '''
+            echo $KUBE_HOME
+            $KUBE_HOME/kubectl apply -f k8s/spring-boot-demo-k8s.yaml
+            '''
+          }
+       }
    }
   
    
