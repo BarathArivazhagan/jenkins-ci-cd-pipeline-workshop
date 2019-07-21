@@ -1,4 +1,4 @@
 FROM openjdk:8-jdk-alpine as final
-ADD target/simple-spring-application-*.jar app.jar
+ADD target/spring-boot-demo-*.jar app.jar
 ENTRYPOINT ["java","-jar","app.jar"]
 
