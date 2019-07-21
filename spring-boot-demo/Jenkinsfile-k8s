@@ -41,8 +41,9 @@ node {
        withEnv(["KUBE_HOME=$kubeHome"]) {
           dir("spring-boot-demo") {
             sh '''
-            echo $KUBE_HOME
-            $KUBE_HOME/kubectl apply -f k8s/spring-boot-demo-k8s.yaml
+            imageName=barathece91/spring-boot-ci-demo:${BUILD_NUMBER}
+            sed 's/IMAGE_NAME/imageName/g' k8s/spring-boot-demo-k8s.yaml > k8s.yaml
+            $KUBE_HOME/kubectl apply -f k8s.yaml
             '''
           }
        }
