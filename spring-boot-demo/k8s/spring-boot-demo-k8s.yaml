@@ -1,0 +1,37 @@
+---
+
+# deployment resource for eureka server
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-app
+spec:
+  selector:
+    matchLabels:
+      app: demo-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: demo-app
+    spec:
+      containers:
+      - name: demo-app
+        image: barathece91/demo-app
+        ports:
+        - containerPort: 8080
+      
+   
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: demo-app
+spec:
+  selector:
+    app: demo-app
+  type: ClusterIP
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
