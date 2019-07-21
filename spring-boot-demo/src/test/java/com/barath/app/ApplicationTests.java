@@ -28,7 +28,7 @@ public class ApplicationTests {
 	public void testHome() throws UnsupportedEncodingException, Exception {
 		String response=mockMvc.perform(get("/")).andDo(print()).andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
 		System.out.println("Response is "+response);
-		assertEquals(response, "hello world");
+		assertEquals(response, "hello demo");
 	}
 
 }
