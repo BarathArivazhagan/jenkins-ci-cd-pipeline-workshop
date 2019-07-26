@@ -43,8 +43,8 @@ node {
             sh '''
             orgName=barathece91
             imageName=spring-boot-ci-demo:${BUILD_NUMBER}
-            sed -i -e 's/IMAGE_NAME/imageName/g' -e 's/ORG_NAME/orgName/g'  k8s/spring-boot-demo-k8s.yaml > k8s.yaml
-            $KUBE_HOME/kubectl apply -f k8s.yaml
+            sed -i -e 's/IMAGE_NAME/'"$imageName"'/g' -e 's/ORG_NAME/'"$orgName"'/g'  k8s/spring-boot-demo-k8s.yaml
+            $KUBE_HOME/kubectl apply -f  $KUBE_HOME/kubectl apply -f k8s/spring-boot-demo-k8s.yaml
             '''
           }
        }
